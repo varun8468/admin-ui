@@ -1,10 +1,21 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import AdminUI from "@/components/AdminUI";
 
-const inter = Inter({ subsets: ['latin'] })
+export async function getStaticProps() {
+  const response = await fetch('https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json');
+  const data = await response.json();
 
-export default function Home() {
+  return {
+    props: {
+      users: data,
+    },
+  };
+}
+
+export default function AdminPage({users}) {
   return (
-    <div>home</div>
-  )
+    <main className="flex justify-center flex-col items-center">
+      <h1 className="text-3xl py-5">Admin UI</h1>
+      <AdminUI users={users} />
+    </main>
+  );
 }
