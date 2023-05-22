@@ -1,8 +1,20 @@
 import React from 'react'
 
-const Pagination = () => {
+const Pagination = ({ usersPerPage, totalUsers }) => {
+    const pageNumbers = [];
+    for( let i = 1; i <= Math.ceil(totalUsers / usersPerPage); i++){
+        pageNumbers.push(i);
+    }
   return (
-    <div>Pagination</div>
+    <nav>
+        <ul className=''>
+            {pageNumbers.map(number => (
+                <li key={number}>
+                    <button>{number}</button>
+                </li>
+            ))}
+        </ul>
+    </nav>
   )
 }
 
