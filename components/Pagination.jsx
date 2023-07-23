@@ -1,4 +1,5 @@
 import React from "react";
+import { FaAngleLeft, FaAngleRight, FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
 
 const Pagination = ({
   currentPage,
@@ -22,27 +23,35 @@ const Pagination = ({
       <button
         onClick={goToFirstPage}
         disabled={currentPage === 1}
-        className="px-3 py-1 border border-gray-300 rounded-l-md bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+        className={`h-10 w-10 mr-2 rounded-full ${
+          currentPage === 1
+            ? "border-gray-400 bg-gray-200"
+            : "border-blue-500 bg-blue-500"
+        } flex items-center justify-center`}
       >
-        First
+        <FaAngleDoubleLeft className={currentPage === 1 ? "text-gray-500" : "text-white"} />
       </button>
       <button
         onClick={goToPreviousPage}
         disabled={currentPage === 1}
-        className="px-3 py-1 border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+        className={`h-10 w-10 mr-2 rounded-full ${
+          currentPage === 1
+            ? "border-gray-400 bg-gray-200"
+            : "border-blue-500 bg-blue-500"
+        } flex items-center justify-center`}
       >
-        Previous
+        <FaAngleLeft className={currentPage === 1 ? "text-gray-500" : "text-white"} />
       </button>
       {getPageNumbers().map((pageNumber) => (
         <button
           key={pageNumber}
           onClick={() => goToPage(pageNumber)}
           disabled={currentPage === pageNumber}
-          className={`px-3 py-1 border ${
+          className={`h-10 w-10 mr-2 rounded-full border ${
             currentPage === pageNumber
-              ? "border-blue-500 bg-blue-500 text-white"
-              : "border-gray-300 bg-white text-gray-500"
-          } text-sm font-medium hover:bg-gray-50`}
+              ? "border-blue-500 bg-white"
+              : "border-blue-500 bg-blue-500 text-white"
+          } flex items-center justify-center`}
         >
           {pageNumber}
         </button>
@@ -50,16 +59,24 @@ const Pagination = ({
       <button
         onClick={goToNextPage}
         disabled={currentPage === totalPages}
-        className="px-3 py-1 border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+        className={`h-10 w-10 mr-2 rounded-full ${
+          currentPage === totalPages
+            ? "border-gray-400 bg-gray-200"
+            : "border-blue-500 bg-blue-500"
+        } flex items-center justify-center`}
       >
-        Next
+        <FaAngleRight className={currentPage === totalPages ? "text-gray-500" : "text-white"} />
       </button>
       <button
         onClick={goToLastPage}
         disabled={currentPage === totalPages}
-        className="px-3 py-1 border border-gray-300 rounded-r-md bg-white text-sm font-medium text-gray-500 hover:bg-gray-50"
+        className={`h-10 w-10 rounded-full ${
+          currentPage === totalPages
+            ? "border-gray-400 bg-gray-200"
+            : "border-blue-500 bg-blue-500"
+        } flex items-center justify-center`}
       >
-        Last
+        <FaAngleDoubleRight className={currentPage === totalPages ? "text-gray-500" : "text-white"} />
       </button>
     </div>
   );

@@ -23,7 +23,7 @@ export default function AdminPage({ users }) {
         <link rel="icon" href="/admin.png" />
       </Head>
       <main className="flex justify-center flex-col items-center">
-        <h1 className="text-3xl py-5">Admin UI</h1>
+        <h1 className="text-3xl py-2">Admin UI</h1>
         <AdminUI users={users} />
       </main>
     </>
